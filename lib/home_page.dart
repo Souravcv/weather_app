@@ -18,7 +18,7 @@ class _HomePageState extends State<HomePage> {
   WeatherApiClient client = WeatherApiClient();
   Weather? data;
   Future <void> getData()async{
-data = await client.getCurrentWeather("india");
+data = await client.getCurrentWeather('Georgia');
   }
 
   @override
