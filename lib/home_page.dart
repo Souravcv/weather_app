@@ -1,8 +1,6 @@
-import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:weather_app/model/weather_model.dart';
 import 'package:weather_app/services/weather_api.dart';
 
@@ -18,7 +16,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   WeatherApiClient client = WeatherApiClient();
-  Weather data = Weather();
+  Weather? data;
   Future <void> getData()async{
 data = await client.getCurrentWeather("india");
   }
@@ -49,8 +47,8 @@ data = await client.getCurrentWeather("india");
             Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          currentWeathed(Icons.wb_sunny_rounded, "${data.temp}", "${data.cityName}"),
-          SizedBox(
+          currentWeathed(Icons.wb_sunny_rounded, "${data?.temp}", "${data?.cityName}"),
+         const SizedBox(
             height: 20.0,
           ),
           Text(
@@ -61,7 +59,7 @@ data = await client.getCurrentWeather("india");
           SizedBox(
             height: 20.0,
           ),
-          additionalInformation("${data.wind}", "${data.humidity}", "${data.pressure}", "${data.feelsLike}"),
+          additionalInformation("${data?.wind}", "${data?.humidity}", "${data?.pressure}", "${data?.feelsLike}"),
         ],
       );
             
